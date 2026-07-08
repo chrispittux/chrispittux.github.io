@@ -159,8 +159,13 @@
       .exp-table td:not(:first-child) { padding-left: 16px; }
       .exp-col-role, .exp-col-year { display: none; }
       .quick-facts { grid-template-columns: 1fr; }
-      .about-cta { flex-direction: column; }
+      .about-cta { flex-direction: column; padding: 40px 32px; }
       footer { padding: 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .about-cta { padding: 32px 24px; }
+      .about-cta-h { font-size: 22px; }
     }
 
     /* ── Contact Modal ── */
