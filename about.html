@@ -453,7 +453,7 @@
     overlay.addEventListener('click', e => { if(e.target===overlay) close(); });
     document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
     document.getElementById('cmodal-copy').addEventListener('click', function() {
-      navigator.clipboard.writeText('c.pitt848@gmail.com');
+      try { navigator.clipboard.writeText('c.pitt848@gmail.com'); } catch(e){}
       this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy',2000);
     });
     document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', open));
