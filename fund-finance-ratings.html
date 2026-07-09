@@ -491,117 +491,29 @@
       footer { padding: 24px 24px calc(24px + env(safe-area-inset-bottom)); }
     }
 
-    /* ── Contact Modal ── */
-    .cmodal-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: flex-start; justify-content: center; padding: calc(74px + env(safe-area-inset-top)) 16px 16px; opacity: 0; pointer-events: none; transition: opacity .25s var(--ease); }
-    .cmodal-overlay.open { opacity: 1; pointer-events: all; }
-    .cmodal { background: #111827; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 24px 24px 26px; width: 100%; max-width: 360px; position: relative; transform-origin: top center; transform: translateY(-10px) scale(0.97); transition: transform .3s var(--ease); box-shadow: 0 24px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1); }
-    .cmodal-overlay.open .cmodal { transform: translateY(0) scale(1); }
-    .cmodal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); color: var(--muted); font-size: 16px; line-height: 1; display: flex; align-items: center; justify-content: center; outline: none; transition: background .2s var(--ease), color .2s var(--ease); }
-    .cmodal-close:hover { background: rgba(255,255,255,.14); color: var(--text); }
-    .cmodal-avail { display: inline-flex; align-items: center; gap: 6px; background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.2); border-radius: 100px; padding: 4px 10px 4px 8px; margin-bottom: 14px; }
-    .cmodal-avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; box-shadow: 0 0 6px rgba(52,211,153,.6); flex-shrink: 0; }
-    .cmodal-avail-text { font-family: 'DM Mono', monospace; font-size: 11px; color: #34D399; letter-spacing: .06em; text-transform: uppercase; }
-    .cmodal-h { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 8px; color: var(--text); }
-    .cmodal-sub { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 18px; }
-    .cmodal-rows { display: flex; flex-direction: column; gap: 8px; }
-    .cmodal-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 16px; transition: background .2s var(--ease), border-color .2s var(--ease); text-decoration: none; color: inherit; }
-    a.cmodal-row:hover { background: rgba(255,255,255,.09); border-color: rgba(111,190,252,.3); }
-    .cmodal-row-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
-    .cmodal-row-value { font-size: 15px; font-weight: 600; color: var(--text); }
-    .cmodal-copy-btn { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); background: rgba(111,190,252,.1); border: 1px solid rgba(111,190,252,.2); border-radius: 100px; padding: 6px 14px; letter-spacing: .04em; text-transform: uppercase; transition: background .2s var(--ease); flex-shrink: 0; }
-    .cmodal-copy-btn:hover { background: rgba(111,190,252,.2); }
-    .cmodal-arrow { color: var(--accent); font-size: 18px; transition: transform .2s var(--ease); flex-shrink: 0; }
-    a.cmodal-row:hover .cmodal-arrow { transform: translateX(3px); }
-    .cmodal-handle { display: none; }
+    /* ── Contact section ── */
+    .fcta { background: rgba(255,255,255,.03); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border-top: 1px solid rgba(255,255,255,.07); padding: 96px 48px; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; overflow: hidden; scroll-margin-top: 92px; }
+    .fcta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,247,.4), rgba(34,211,238,.3), transparent); }
+    .fcta-eye { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 28px; }
+    .fcta-h { font-family: 'Fraunces', serif; font-size: clamp(28px, 5vw, 60px); font-weight: 700; line-height: 1.12; letter-spacing: -.03em; color: var(--text); margin-bottom: 36px; max-width: 900px; }
+    .fcta-email { font-size: clamp(15px, 1.6vw, 20px); font-weight: 400; color: var(--accent-2); border: none; border-bottom: 1px solid rgba(79,142,247,.3); padding: 0 0 3px; background: none; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; gap: 9px; transition: color .22s, border-color .22s; }
+    .fcta-email:hover { color: var(--text); border-color: var(--accent); }
+    .fcta-email:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .fcta-email .cico { display: inline-flex; }
+    .fcta-email .cico svg { width: 15px; height: 15px; }
+    .fcta-links { display: flex; align-items: center; gap: 24px; margin-top: 34px; }
+    .fcta-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .22s var(--ease); }
+    .fcta-link:hover { color: var(--text); }
+    .fcta-links .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(157,170,191,.4); }
+    .fcta-email .ico-check { display: none; color: #34D399; }
+    .fcta-email.copied { color: #34D399; border-color: rgba(52,211,153,.45); }
+    .fcta-email.copied .ico-copy { display: none; }
+    .fcta-email.copied .ico-check { display: inline-flex; }
+    .sr-live { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 600px) {
-      .cmodal-overlay { justify-content: flex-end; padding-top: calc(72px + env(safe-area-inset-top)); }
-      .cmodal { transform-origin: top right; }
-      .cmodal-h { font-size: 24px; }
+      .fcta { padding: 52px 20px; }
+      .fcta-email { padding: 6px 4px 4px; }
     }
-
-    /* ════════════════════════════════════════════
-       BROADSHEET — compressed palette
-       Dark zone:  hero #0A0E1A → TLDR #0F1D36
-       Light zone: sections #E8EEF8 / #DCE5F4
-       ════════════════════════════════════════════ */
-
-    .hero { min-height: auto; padding: 140px 80px 64px; justify-content: flex-start; }
-    .hero-img-wrap { position: relative; z-index: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 80px; }
-    .hero-img { width: 100%; border-radius: 16px; display: block; box-shadow: 0 24px 80px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.07); }
-    .hero-img-section { padding: 64px 0; position: relative; z-index: 1; }
-    .hero-img-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,247,.4), rgba(34,211,238,.3), transparent); }
-    .hero-h1 { font-size: clamp(32px, 4vw, 60px); letter-spacing: -.03em; max-width: 860px; margin-bottom: 20px; }
-    .hero-deck { font-size: clamp(15px, 1.5vw, 19px); color: var(--muted); max-width: 580px; line-height: 1.55; margin-bottom: 48px; }
-
-    .tldr { background: #0F1D36; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none; }
-    .tldr::before { background: linear-gradient(90deg, transparent, rgba(111,190,252,.3), rgba(168,216,255,.25), transparent); }
-    .tldr::after { background: linear-gradient(90deg, transparent, rgba(30,58,138,.25), transparent); }
-
-    nav { background: rgba(10,14,26,.88); border-color: rgba(255,255,255,.1); }
-
-    #progress-bar { background: linear-gradient(90deg, #0F1D36, #1E3A8A, #2563EB); box-shadow: 0 0 6px rgba(30,58,138,.5); }
-
-    .section-dot-label { color: #C0CEDF; }
-    .section-dots { background: rgba(10,14,26,.92); border-color: rgba(255,255,255,.1); }
-
-    .section { background: #E8EEF8; }
-    #plan, #design, #results { background: #DCE5F4; }
-    .section::before { background: rgba(15,29,54,.12); }
-    .section-left { border-right-color: rgba(15,29,54,.12); }
-
-    .section-label { color: #1E3A8A; border-left-color: #1E3A8A; }
-    .section .section-h { color: #0A0E1A; }
-    .section .section-h .accent { color: #1E3A8A; }
-    .section .body-text { color: #1E293B; }
-    .section .body-text strong { color: #0A0E1A; }
-
-    .section .img-placeholder { background: #FFFFFF; border-color: rgba(15,29,54,.1); backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: 0 2px 12px rgba(15,29,54,.07); }
-    .section .img-placeholder-label { color: #374151; }
-    .section .img-icon { border-color: #6B82A8; color: #6B82A8; }
-    .section .img-caption { border-top-color: rgba(15,29,54,.08); color: #374151; }
-    .section .img-caption strong { color: #0A0E1A; }
-
-    .section .card-item { background: #FFFFFF; border: 1px solid rgba(15,29,54,.1); box-shadow: 0 2px 12px rgba(15,29,54,.08), 0 1px 0 rgba(15,29,54,.05); backdrop-filter: none; -webkit-backdrop-filter: none; }
-    @media (hover: hover) and (pointer: fine) {
-      .section .card-item:hover { border-color: rgba(30,58,138,.3); box-shadow: 0 6px 24px rgba(30,58,138,.12); transform: translateY(-2px) scale(1.003); }
-    }
-    .section .card-num { color: #1E3A8A; }
-    .section .card-content h3 { color: #0A0E1A; }
-    .section .card-content p { color: #374151; }
-    .section .card-content p strong { color: #0A0E1A; }
-
-    .section .artifact-caption { color: #374151; background: rgba(15,29,54,.04); border-top-color: rgba(15,29,54,.08); }
-    .section .artifact-caption strong { color: #0A0E1A; }
-
-    .section .pull-quote { background: rgba(30,58,138,.07); border-color: rgba(30,58,138,.22); box-shadow: inset 0 1px 0 rgba(30,58,138,.14); backdrop-filter: none; -webkit-backdrop-filter: none; }
-    .section .pull-quote::before { background: linear-gradient(90deg, transparent, rgba(30,58,138,.25), rgba(30,58,138,.45), rgba(30,58,138,.25), transparent); }
-    .section .pull-quote p { color: #0A0E1A; }
-
-    .section .key-insight { background: rgba(30,58,138,.06); border-color: rgba(30,58,138,.18); }
-    .section .key-insight p { color: #1E293B; }
-    .section .key-insight strong { color: #1E3A8A; }
-
-    /* Sub-label divider inside a section (signals a second beat) */
-    .section .sub-label { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #1E3A8A; margin: 48px 0 20px; padding-top: 24px; border-top: 1px solid rgba(15,29,54,.12); }
-
-    /* Before / After system model */
-    .before-after { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 16px; margin: 32px 0; }
-    .before-after .ba-col { background: #FFFFFF; border: 1px solid rgba(15,29,54,.1); border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(15,29,54,.08); }
-    .before-after .ba-after { border-color: rgba(30,58,138,.25); box-shadow: 0 2px 16px rgba(30,58,138,.12); }
-    .before-after .ba-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 12px; }
-    .before-after .ba-after .ba-tag { color: #1E3A8A; }
-    .before-after .ba-col h3 { color: #0A0E1A; font-size: 17px; margin: 0 0 8px; }
-    .before-after .ba-col p { color: #374151; font-size: 14px; line-height: 1.6; margin: 0; }
-    .before-after .ba-arrow { align-self: center; color: #1E3A8A; font-size: 24px; font-weight: 700; }
-    @media (max-width: 640px) { .before-after { grid-template-columns: 1fr; } .before-after .ba-arrow { transform: rotate(90deg); justify-self: center; } }
-
-    .section .result-card { background: #FFFFFF; border: 1px solid rgba(15,29,54,.1); box-shadow: 0 2px 12px rgba(15,29,54,.08); }
-    .section .result-card::before { background: linear-gradient(90deg, transparent, rgba(30,58,138,.1), rgba(30,58,138,.18), rgba(30,58,138,.1), transparent); }
-    @media (hover: hover) and (pointer: fine) {
-      .section .result-card:hover { border-color: rgba(30,58,138,.25); box-shadow: 0 8px 32px rgba(30,58,138,.1); transform: translateY(-4px) scale(1.015); }
-    }
-    .section .result-value { color: #1E3A8A; }
-    .section .result-label { color: #374151; }
   </style>
 </head>
 <body>
@@ -625,7 +537,7 @@
         <li><a href="index.html#work" class="nav-link">Work</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="Chris-Pitt-Resume.pdf" target="_blank" class="nav-link">Resume</a></li>
-        <li><a href="#" class="nav-link" data-contact>Contact</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="ham">
         <span></span><span></span><span></span>
@@ -638,7 +550,7 @@
     <a href="index.html#work" class="drawer-link">Work</a>
     <a href="about.html" class="drawer-link">About</a>
     <a href="Chris-Pitt-Resume.pdf" target="_blank" class="drawer-link">Resume</a>
-    <a href="#" class="drawer-link" data-contact>Contact</a>
+    <a href="#contact" class="drawer-link">Contact</a>
   </nav>
 
   <main>
@@ -983,6 +895,22 @@
 
   </main>
 
+  <section class="fcta" id="contact" aria-labelledby="fcta-h">
+    <p class="fcta-eye">New York City</p>
+    <h2 id="fcta-h" class="fcta-h">Good work starts with<br/>the right conversation.</h2>
+    <button type="button" class="fcta-email" data-copy-email aria-label="Copy email address c.pitt848@gmail.com">
+      <span class="fcta-email-label">c.pitt848@gmail.com</span>
+      <span class="cico ico-copy" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+      <span class="cico ico-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    </button>
+    <div class="fcta-links">
+      <a href="https://www.linkedin.com/in/chris-pitt1/" class="fcta-link" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="dot" aria-hidden="true"></span>
+      <a href="Chris-Pitt-Resume.pdf" class="fcta-link" target="_blank" rel="noopener">Resume</a>
+    </div>
+    <span class="sr-live" aria-live="polite"></span>
+  </section>
+
   <footer>
     <span class="f-copy">© 2026 Chris Pitt</span>
     <a href="work-manager-hub-broadsheet.html" class="f-next">← Back: Work Manager Hub</a>
@@ -1105,51 +1033,25 @@
 
   </script>
 
-  <!-- Contact Modal -->
-  <div id="cmodal" class="cmodal-overlay" role="dialog" aria-modal="true" aria-label="Contact Chris Pitt">
-    <div class="cmodal">
-      <button class="cmodal-close" id="cmodal-close" aria-label="Close">×</button>
-      <div class="cmodal-avail"><span class="cmodal-avail-dot"></span><span class="cmodal-avail-text">Available for Work</span></div>
-      <h2 class="cmodal-h">Let's talk.</h2>
-      <p class="cmodal-sub">Full-time & contract roles · NYC or remote.</p>
-      <div class="cmodal-rows">
-        <div class="cmodal-row" style="cursor:default;">
-          <div>
-            <div class="cmodal-row-label">Email</div>
-            <div class="cmodal-row-value">c.pitt848@gmail.com</div>
-          </div>
-          <button class="cmodal-copy-btn" id="cmodal-copy">Copy</button>
-        </div>
-        <a href="https://www.linkedin.com/in/chris-pitt1/" target="_blank" rel="noopener" class="cmodal-row">
-          <div>
-            <div class="cmodal-row-label">LinkedIn</div>
-            <div class="cmodal-row-value">linkedin.com/in/chris-pitt1</div>
-          </div>
-          <span class="cmodal-arrow">→</span>
-        </a>
-        <a href="Chris-Pitt-Resume.pdf" target="_blank" class="cmodal-row">
-          <div>
-            <div class="cmodal-row-label">Resume</div>
-            <div class="cmodal-row-value">View PDF</div>
-          </div>
-          <span class="cmodal-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
   <script>
     (function() {
-      const overlay = document.getElementById('cmodal');
-      const open = e => { if(e) e.preventDefault(); overlay.classList.add('open'); document.body.style.overflow='hidden'; };
-      const close = () => { overlay.classList.remove('open'); document.body.style.overflow=''; };
-      document.getElementById('cmodal-close').addEventListener('click', close);
-      overlay.addEventListener('click', e => { if(e.target===overlay) close(); });
-      document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
-      document.getElementById('cmodal-copy').addEventListener('click', function() {
-        try { navigator.clipboard.writeText('c.pitt848@gmail.com'); } catch(e){}
-        this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy',2000);
+      document.querySelectorAll('[data-copy-email]').forEach(function(btn) {
+        var label = btn.querySelector('.fcta-email-label');
+        var live = btn.parentElement.querySelector('.sr-live');
+        var original = label ? label.textContent : '';
+        btn.addEventListener('click', function() {
+          try { navigator.clipboard.writeText('c.pitt848@gmail.com'); } catch(e){}
+          if (label) label.textContent = 'Copied to clipboard';
+          btn.classList.add('copied');
+          if (live) live.textContent = 'Email address copied to clipboard';
+          clearTimeout(btn._t);
+          btn._t = setTimeout(function() {
+            if (label) label.textContent = original;
+            btn.classList.remove('copied');
+            if (live) live.textContent = '';
+          }, 1800);
+        });
       });
-      document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', open));
     })();
   </script>
 </body>

@@ -683,11 +683,15 @@
     .fcta-email {
       font-size: clamp(15px, 1.6vw, 20px); font-weight: 400;
       color: var(--accent-2);
-      border-bottom: 1px solid rgba(79,142,247,.3);
-      padding-bottom: 3px; margin-bottom: 36px; display: inline-block;
+      border: none; border-bottom: 1px solid rgba(79,142,247,.3);
+      padding: 0 0 3px; background: none; font-family: inherit; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 9px;
       transition: color .22s, border-color .22s;
     }
     .fcta-email:hover { color: var(--text); border-color: var(--accent); }
+    .fcta-email:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .fcta-email .cico { display: inline-flex; }
+    .fcta-email .cico svg { width: 15px; height: 15px; }
     .btn-cta {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--accent);
@@ -843,7 +847,7 @@
       .f-link { font-size: 10px; padding: 8px 3px; }
       /* Larger tap targets (WCAG 2.5.5) */
       .hero-cta { padding: 12px 10px; }
-      .fcta-email { padding: 10px 8px; }
+      .fcta-email { padding: 6px 4px 4px; }
       .nav-logo { padding: 11px 4px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -854,34 +858,17 @@
       .avail-dot::after { animation: none; }
     }
 
-    /* ── Contact Modal ── */
-    .cmodal-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: flex-start; justify-content: center; padding: calc(74px + env(safe-area-inset-top)) 16px 16px; opacity: 0; pointer-events: none; transition: opacity .25s var(--ease); }
-    .cmodal-overlay.open { opacity: 1; pointer-events: all; }
-    .cmodal { background: #111827; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 24px 24px 26px; width: 100%; max-width: 360px; position: relative; transform-origin: top center; transform: translateY(-10px) scale(0.97); transition: transform .3s var(--ease); box-shadow: 0 24px 80px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.1); }
-    .cmodal-overlay.open .cmodal { transform: translateY(0) scale(1); }
-    .cmodal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); color: var(--muted); font-size: 16px; line-height: 1; display: flex; align-items: center; justify-content: center; outline: none; transition: background .2s var(--ease), color .2s var(--ease); }
-    .cmodal-close:hover { background: rgba(255,255,255,.14); color: var(--text); }
-    .cmodal-avail { display: inline-flex; align-items: center; gap: 6px; background: rgba(52,211,153,.1); border: 1px solid rgba(52,211,153,.2); border-radius: 100px; padding: 4px 10px 4px 8px; margin-bottom: 14px; }
-    .cmodal-avail-dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; box-shadow: 0 0 6px rgba(52,211,153,.6); flex-shrink: 0; }
-    .cmodal-avail-text { font-family: 'DM Mono', monospace; font-size: 11px; color: #34D399; letter-spacing: .06em; text-transform: uppercase; }
-    .cmodal-h { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 8px; color: var(--text); }
-    .cmodal-sub { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 18px; }
-    .cmodal-rows { display: flex; flex-direction: column; gap: 8px; }
-    .cmodal-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 13px 16px; transition: background .2s var(--ease), border-color .2s var(--ease); text-decoration: none; color: inherit; }
-    a.cmodal-row:hover { background: rgba(255,255,255,.09); border-color: rgba(111,190,252,.3); }
-    .cmodal-row-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
-    .cmodal-row-value { font-size: 15px; font-weight: 600; color: var(--text); }
-    .cmodal-copy-btn { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); background: rgba(111,190,252,.1); border: 1px solid rgba(111,190,252,.2); border-radius: 100px; padding: 6px 14px; letter-spacing: .04em; text-transform: uppercase; transition: background .2s var(--ease); flex-shrink: 0; }
-    .cmodal-copy-btn:hover { background: rgba(111,190,252,.2); }
-    .cmodal-arrow { color: var(--accent); font-size: 18px; transition: transform .2s var(--ease); flex-shrink: 0; }
-    a.cmodal-row:hover .cmodal-arrow { transform: translateX(3px); }
-    .cmodal-handle { display: none; }
-    /* Contact popover anchors to the top on iPhone (from the menu button, top-right) */
-    @media (max-width: 600px) {
-      .cmodal-overlay { justify-content: flex-end; padding-top: calc(72px + env(safe-area-inset-top)); }
-      .cmodal { transform-origin: top right; }
-      .cmodal-h { font-size: 24px; }
-    }
+    /* ── Contact section links ── */
+    .fcta { scroll-margin-top: 92px; }
+    .fcta-links { display: flex; align-items: center; gap: 24px; margin-top: 34px; }
+    .fcta-link { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .22s var(--ease); }
+    .fcta-link:hover { color: var(--text); }
+    .fcta-links .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(157,170,191,.4); }
+    .fcta-email .ico-check { display: none; color: #34D399; }
+    .fcta-email.copied { color: #34D399; border-color: rgba(52,211,153,.45); }
+    .fcta-email.copied .ico-copy { display: none; }
+    .fcta-email.copied .ico-check { display: inline-flex; }
+    .sr-live { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
 <body>
@@ -902,7 +889,7 @@
         <li><a href="#work" class="nav-link">Work</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="Chris-Pitt-Resume.pdf" target="_blank" class="nav-link">Resume</a></li>
-        <li><a href="#" class="nav-link" data-contact>Contact</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="ham">
         <span></span><span></span><span></span>
@@ -915,7 +902,7 @@
     <a href="#work" class="drawer-link">Work</a>
     <a href="about.html" class="drawer-link">About</a>
     <a href="Chris-Pitt-Resume.pdf" target="_blank" class="drawer-link">Resume</a>
-    <a href="#" class="drawer-link" data-contact>Contact</a>
+    <a href="#contact" class="drawer-link">Contact</a>
   </nav>
 
   <main>
@@ -1182,16 +1169,24 @@
     </div>
 
     <!-- Footer CTA -->
-    <section class="fcta" aria-labelledby="fcta-h">
+    <section class="fcta" id="contact" aria-labelledby="fcta-h">
       <p class="fcta-eye r">New York City</p>
       <h2 id="fcta-h" class="fcta-h r d1">Good work starts with<br/>the right conversation.</h2>
-      <a href="mailto:c.pitt848@gmail.com" class="fcta-email r d2">c.pitt848@gmail.com</a>
-      <a href="#" class="btn-cta r d3" data-contact>
-        Say hello
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <path d="M1.5 6h9M6 1.5l4.5 4.5L6 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <button type="button" class="fcta-email r d2" data-copy-email aria-label="Copy email address c.pitt848@gmail.com">
+        <span class="fcta-email-label">c.pitt848@gmail.com</span>
+        <span class="cico ico-copy" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </span>
+        <span class="cico ico-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+      </button>
+      <div class="fcta-links r d3">
+        <a href="https://www.linkedin.com/in/chris-pitt1/" class="fcta-link" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="dot" aria-hidden="true"></span>
+        <a href="Chris-Pitt-Resume.pdf" class="fcta-link" target="_blank" rel="noopener">Resume</a>
+      </div>
+      <span class="sr-live" aria-live="polite"></span>
     </section>
 
   </main>
@@ -1283,51 +1278,25 @@
     });
   </script>
 
-  <!-- Contact Modal -->
-  <div id="cmodal" class="cmodal-overlay" role="dialog" aria-modal="true" aria-label="Contact Chris Pitt">
-    <div class="cmodal">
-      <button class="cmodal-close" id="cmodal-close" aria-label="Close">×</button>
-      <div class="cmodal-avail"><span class="cmodal-avail-dot"></span><span class="cmodal-avail-text">Available for Work</span></div>
-      <h2 class="cmodal-h">Let's talk.</h2>
-      <p class="cmodal-sub">Full-time & contract roles · NYC or remote.</p>
-      <div class="cmodal-rows">
-        <div class="cmodal-row" style="cursor:default;">
-          <div>
-            <div class="cmodal-row-label">Email</div>
-            <div class="cmodal-row-value">c.pitt848@gmail.com</div>
-          </div>
-          <button class="cmodal-copy-btn" id="cmodal-copy">Copy</button>
-        </div>
-        <a href="https://www.linkedin.com/in/chris-pitt1/" target="_blank" rel="noopener" class="cmodal-row">
-          <div>
-            <div class="cmodal-row-label">LinkedIn</div>
-            <div class="cmodal-row-value">linkedin.com/in/chris-pitt1</div>
-          </div>
-          <span class="cmodal-arrow">→</span>
-        </a>
-        <a href="Chris-Pitt-Resume.pdf" target="_blank" class="cmodal-row">
-          <div>
-            <div class="cmodal-row-label">Resume</div>
-            <div class="cmodal-row-value">View PDF</div>
-          </div>
-          <span class="cmodal-arrow">↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
   <script>
     (function() {
-      const overlay = document.getElementById('cmodal');
-      const open = e => { if(e) e.preventDefault(); overlay.classList.add('open'); document.body.style.overflow='hidden'; };
-      const close = () => { overlay.classList.remove('open'); document.body.style.overflow=''; };
-      document.getElementById('cmodal-close').addEventListener('click', close);
-      overlay.addEventListener('click', e => { if(e.target===overlay) close(); });
-      document.addEventListener('keydown', e => { if(e.key==='Escape') close(); });
-      document.getElementById('cmodal-copy').addEventListener('click', function() {
-        try { navigator.clipboard.writeText('c.pitt848@gmail.com'); } catch(e){}
-        this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy',2000);
+      document.querySelectorAll('[data-copy-email]').forEach(function(btn) {
+        var label = btn.querySelector('.fcta-email-label');
+        var live = btn.parentElement.querySelector('.sr-live');
+        var original = label ? label.textContent : '';
+        btn.addEventListener('click', function() {
+          try { navigator.clipboard.writeText('c.pitt848@gmail.com'); } catch(e){}
+          if (label) label.textContent = 'Copied to clipboard';
+          btn.classList.add('copied');
+          if (live) live.textContent = 'Email address copied to clipboard';
+          clearTimeout(btn._t);
+          btn._t = setTimeout(function() {
+            if (label) label.textContent = original;
+            btn.classList.remove('copied');
+            if (live) live.textContent = '';
+          }, 1800);
+        });
       });
-      document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', open));
     })();
   </script>
 </body>
