@@ -120,7 +120,7 @@
     footer { padding: 16px 56px; background: rgba(10,14,26,.9); border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; color: var(--subtle); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .06em; position: relative; z-index: 1; }
     .f-copy { white-space: nowrap; }
     .f-flinks { display: flex; align-items: center; gap: 24px; }
-    .f-flink { color: var(--subtle); letter-spacing: .04em; text-transform: uppercase; transition: color .2s var(--ease); }
+    .f-flink { color: var(--subtle); letter-spacing: .04em; text-transform: uppercase; transition: color .2s var(--ease); padding: 10px 6px; display: inline-block; }
     .f-flink:hover { color: var(--accent); }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
@@ -130,7 +130,7 @@
     .reveal.d3 { transition-delay: .24s; }
 
     /* ── Mobile hamburger ── */
-    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 40px; height: 40px; gap: 5px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 100px; cursor: pointer; transition: background .2s; }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 44px; height: 44px; gap: 5px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 100px; cursor: pointer; transition: background .2s; }
     .hamburger:hover { background: rgba(255,255,255,.1); }
     .hamburger span { display: block; width: 16px; height: 1.5px; background: var(--text); border-radius: 2px; transition: transform .25s var(--ease), opacity .25s; }
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }

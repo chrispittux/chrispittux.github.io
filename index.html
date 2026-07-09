@@ -789,16 +789,21 @@
     @media (max-width: 600px) {
       nav { padding: 6px 6px 6px 20px; }
       .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .hamburger { display: flex; width: 44px; height: 44px; }
       .nav-drawer { display: flex; }
       .hero, .work, .cos, .faq, .fcta { padding-left: 20px; padding-right: 20px; }
       .hero { padding-top: 108px; }
+      .hero-sub { white-space: normal; max-width: 340px; margin-left: auto; margin-right: auto; }
       .cards { grid-template-columns: 1fr; }
       .co-dot { display: none; }
       footer { padding: 14px 20px; }
       .f-copy { font-size: 11px; }
-      .f-links { gap: 16px; }
-      .f-link { font-size: 11px; }
+      .f-links { gap: 8px; }
+      .f-link { font-size: 11px; padding: 10px 6px; }
+      /* Larger tap targets (WCAG 2.5.5) */
+      .hero-cta { padding: 12px 10px; }
+      .fcta-email { padding: 10px 8px; }
+      .nav-logo { padding: 11px 4px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .r { opacity: 1; transform: none; transition: none; }
