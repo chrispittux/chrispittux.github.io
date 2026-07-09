@@ -741,7 +741,6 @@
     @media (max-width: 960px) {
       nav, .hero, .work, .cos, .faq, .fcta, footer { padding-left: 28px; padding-right: 28px; }
       .cards { grid-template-columns: 1fr 1fr; }
-      .card-soon { display: none; }
       .stats { grid-template-columns: 1fr 1fr; }
       .stat:nth-child(2) { border-right: none; }
       .stat:nth-child(3) { border-top: 1px solid var(--border); }
@@ -809,13 +808,37 @@
       .nav-drawer { display: flex; }
       .hero, .work, .cos, .faq, .fcta { padding-left: 20px; padding-right: 20px; }
       .hero { padding-top: 108px; }
+      .hero-h1 { font-size: clamp(28px, 8.6vw, 40px); margin-bottom: 14px; }
       .hero-sub { white-space: normal; max-width: 340px; margin-left: auto; margin-right: auto; }
+      /* Company credits on one line */
+      .hero-creds { flex-wrap: nowrap; gap: 5px; margin-bottom: 30px; }
+      .hero-cred { font-size: 10px; letter-spacing: .01em; }
+      .hero-cred-sep { font-size: 9px; }
       .cards { grid-template-columns: 1fr; }
       .co-dot { display: none; }
-      footer { padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); }
-      .f-copy { font-size: 11px; }
-      .f-links { gap: 8px; }
-      .f-link { font-size: 11px; padding: 10px 6px; }
+      /* What I do best: stacked, readable, no hover */
+      .best { padding: 52px 20px; }
+      .best-row { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; margin: 0; }
+      .best-row:hover { background: transparent; }
+      .best-row:hover .best-row-num { color: var(--subtle); }
+      .best-row-num { padding-top: 0; }
+      .best-skill { padding-top: 0; font-size: 13px; }
+      .best-desc { font-size: 15px; line-height: 1.65; }
+      /* FAQ: tighter, no hover */
+      .faq { padding: 52px 20px; gap: 24px; }
+      .faq-item:hover { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.07); }
+      .faq-item:hover::before { opacity: 0; }
+      .faq-btn { padding: 16px 16px 16px 18px; }
+      .faq-btn:hover { color: var(--text); }
+      .faq-ans { padding: 0 18px; }
+      .faq-item.open .faq-ans { padding: 0 18px 18px; }
+      /* Tighten the section after the FAQ (top/bottom) */
+      .fcta { padding-top: 52px; padding-bottom: 52px; }
+      /* Footer on one line */
+      footer { flex-wrap: nowrap; padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); }
+      .f-copy { font-size: 10px; white-space: nowrap; }
+      .f-links { gap: 10px; flex-shrink: 0; }
+      .f-link { font-size: 10px; padding: 8px 3px; }
       /* Larger tap targets (WCAG 2.5.5) */
       .hero-cta { padding: 12px 10px; }
       .fcta-email { padding: 10px 8px; }
@@ -987,7 +1010,7 @@
               <span class="card-cat dim">Coming Soon</span>
             </div>
             <h2 class="card-title dim">New UX Research Project</h2>
-            <p class="card-desc" style="color:var(--muted);">In progress.</p>
+            <p class="card-desc" style="color:var(--muted);">Expected August 2026.</p>
           </div>
         </article>
 
