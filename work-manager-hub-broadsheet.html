@@ -228,6 +228,14 @@
     }
     .hero-meta-value { font-size: 14px; font-weight: 700; line-height: 1.3; }
 
+    /* Secondary meta tier: team / platform / tools */
+    .hero-meta2 { max-width: 860px; margin-top: 16px; display: flex; flex-direction: column; gap: 11px; }
+    .hero-meta2-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .hero-meta2-k { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--subtle); letter-spacing: .05em; text-transform: uppercase; font-weight: 600; min-width: 68px; flex-shrink: 0; }
+    .hero-meta2-v { font-size: 13px; color: var(--muted); line-height: 1.45; }
+    .hero-tools { display: flex; flex-wrap: wrap; gap: 7px; }
+    .hero-tool { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text); background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 100px; padding: 5px 12px; }
+
     /* ── Hero image slot ── */
     /* To use a real image: replace .hero-img-placeholder with <img src="your-image.jpg" alt="..." class="hero-img"> */
     .hero-img-wrap {
@@ -331,17 +339,25 @@
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, rgba(79,142,247,.4), transparent);
     }
-    .tldr-label {
-      font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent);
-      letter-spacing: .06em; text-transform: uppercase;
-      font-weight: 600; margin-bottom: 24px; display: block;
-    }
     .tldr-text {
       font-family: 'Fraunces', serif;
       font-size: clamp(20px, 2.2vw, 28px); font-weight: 600;
       color: var(--text); line-height: 1.55; max-width: 860px;
     }
     .tldr-text .highlight { color: var(--accent-2); }
+    /* TLDR as a Problem -> What I did -> Outcome arc */
+    .tldr-arc { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0 30px; align-items: start; max-width: 1120px; }
+    .tldr-step .k { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+    .tldr-step .v { font-size: 18px; line-height: 1.5; color: var(--text); font-weight: 500; }
+    .tldr-step.out .v .hl { color: var(--accent-2); font-weight: 700; }
+    .tldr-arrow { align-self: start; margin-top: 34px; color: var(--accent); opacity: .5; }
+    .tldr-arrow svg { width: 26px; height: 26px; display: block; }
+    @media (max-width: 720px) {
+      .tldr-arc { grid-template-columns: 1fr; gap: 0; max-width: 460px; }
+      .tldr-arrow { justify-self: start; margin: 16px 0 16px 6px; transform: rotate(90deg); }
+    }
+    /* reserve the fixed section-dots lane (only visible >1024px) so the arc never runs under it */
+    @media (min-width: 1025px) { .tldr-arc { margin-right: 172px; } }
 
     /* ── Two-column sections ── */
     .section {
@@ -390,11 +406,15 @@
       backdrop-filter: blur(40px) saturate(180%);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
       border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px; padding: 28px 32px; margin-bottom: 12px;
-      display: grid; grid-template-columns: 40px 1fr;
+      border-radius: 16px; padding: 26px 30px; margin-bottom: 16px;
+      display: grid; grid-template-columns: 34px 1fr;
       gap: 20px; align-items: start;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 4px 16px rgba(0,0,0,.2);
       transition: border-color .3s var(--ease), box-shadow .3s var(--ease), transform .3s var(--ease);
+    }
+    @media (max-width: 600px) {
+      .card-item { grid-template-columns: 1fr; gap: 8px; padding: 24px 22px; }
+      .card-num { padding-top: 0 !important; }
     }
     @media (hover: hover) and (pointer: fine) {
       .card-item:hover {
@@ -404,10 +424,19 @@
       }
     }
     .card-item:active { transform: scale(0.98); }
-    .card-num { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: var(--accent); line-height: 1.6; }
-    .card-content h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .card-content p { font-size: 15px; color: #B8C6DC; line-height: 1.75; }
+    .card-num { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 600; color: var(--accent); line-height: 1.5; padding-top: 2px; }
+    .card-content h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; color: var(--text); margin-bottom: 7px; line-height: 1.25; }
+    .card-content p { font-size: 15px; color: #B8C6DC; line-height: 1.6; }
     .card-content p strong { color: var(--text); }
+    /* Numbered list: reusable 2-col grid, big number anchor (Challenge, Plan, Research, Design) */
+    .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 38px 48px; max-width: 720px; margin: 44px 0 0; }
+    .cs-cell { position: relative; }
+    .cs-cell::before { content: ''; position: absolute; left: -22px; top: 4px; bottom: 4px; width: 2px; background: var(--accent); opacity: .2; }
+    .cs-num { font-family: 'Fraunces', serif; font-size: 34px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 10px; }
+    .cs-cell h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: -.01em; }
+    .cs-cell p { font-size: 15px; line-height: 1.55; color: #B8C6DC; }
+    .cs-cell p strong { color: var(--text); font-weight: 700; }
+    @media (max-width: 680px) { .cs-grid { grid-template-columns: 1fr; gap: 28px; } }
 
     /* ── CSS Artifact Mockups ── */
     .artifact {
@@ -623,8 +652,8 @@
     /* Hero H1 — scale down so both impact lines read cleanly, not as a paragraph */
     /* Hero layout: reduce height so headline is above the fold */
     .hero { min-height: auto; padding: 140px 80px 64px; justify-content: flex-start; }
-    .hero-h1 { font-size: clamp(40px, 5.5vw, 84px); letter-spacing: -.03em; max-width: 820px; margin-bottom: 20px; }
-    .hero-deck { font-size: clamp(15px, 1.5vw, 19px); color: var(--muted); max-width: 560px; line-height: 1.55; margin-bottom: 48px; }
+    .hero-h1 { font-size: clamp(30px, 4.6vw, 62px); letter-spacing: -.03em; max-width: 1200px; margin-bottom: 20px; }
+    .hero-deck { font-size: clamp(15px, 1.5vw, 19px); color: var(--muted); max-width: 860px; line-height: 1.55; margin-bottom: 48px; }
 
 
     /* TLDR — subtle lift from #0A0E1A body, same family as landing page */
@@ -706,8 +735,8 @@
     /* Cards — pure white lifts off the blue-tinted section bg */
     .section .card-item {
       background: #FFFFFF;
-      border: 1px solid rgba(15,29,54,.1);
-      box-shadow: 0 2px 12px rgba(15,29,54,.08), 0 1px 0 rgba(15,29,54,.05);
+      border: 1px solid rgba(15,29,54,.09);
+      box-shadow: 0 4px 20px rgba(15,29,54,.07);
       backdrop-filter: none; -webkit-backdrop-filter: none;
     }
     @media (hover: hover) and (pointer: fine) {
@@ -723,6 +752,11 @@
     /* #374151 on white = 8.1:1 ✓ AAA */
     .section .card-content p { color: #374151; }
     .section .card-content p strong { color: #0A0E1A; }
+    .section .cs-num { color: #1E3A8A; }
+    .section .cs-cell::before { background: #1E3A8A; }
+    .section .cs-cell h3 { color: #0A0E1A; }
+    .section .cs-cell p { color: #374151; }
+    .section .cs-cell p strong { color: #0A0E1A; }
 
     /* Artifact captions */
     .section .artifact-caption {
@@ -843,12 +877,12 @@
         <div class="hero-back-sep"></div>
         <span class="hero-tag">Work Manager Hub</span>
       </div>
-      <h1 class="hero-h1 reveal d1">One hub for 1,000+ analysts.</h1>
-      <p class="hero-deck reveal d1">Consolidated seven disconnected tools across four regions at a global bank.</p>
+      <h1 class="hero-h1 reveal d1">One central hub for 1,000+ analysts.</h1>
+      <p class="hero-deck reveal d1">One platform that replaced seven tools and became the daily source of truth.</p>
       <div class="hero-meta-row reveal d2">
         <div class="hero-meta-item">
           <span class="hero-meta-label">Role</span>
-          <div class="hero-meta-value">UX Designer<br/>+ Researcher</div>
+          <div class="hero-meta-value">UX Designer &amp; Researcher</div>
         </div>
         <div class="hero-meta-item">
           <span class="hero-meta-label">Company</span>
@@ -860,8 +894,13 @@
         </div>
         <div class="hero-meta-item">
           <span class="hero-meta-label">Users Impacted</span>
-          <div class="hero-meta-value">1,000+ across 4 regions</div>
+          <div class="hero-meta-value">Across 4 regions, 100% adoption</div>
         </div>
+      </div>
+      <div class="hero-meta2 reveal d2">
+        <div class="hero-meta2-row"><span class="hero-meta2-k">Team</span><span class="hero-meta2-v">Full product team: Product Manager · 3 Designers/Researchers · Developers · QA · Business Analysts · SMEs</span></div>
+        <div class="hero-meta2-row"><span class="hero-meta2-k">Platform</span><span class="hero-meta2-v">Desktop &amp; tablet</span></div>
+        <div class="hero-meta2-row"><span class="hero-meta2-k">Tools</span><span class="hero-tools"><span class="hero-tool">Figma</span><span class="hero-tool">Miro</span><span class="hero-tool">Fullstory</span><span class="hero-tool">Teams</span><span class="hero-tool">Excel</span></span></div>
       </div>
     </section>
 
@@ -874,8 +913,13 @@
 
     <!-- TLDR -->
     <div class="tldr reveal">
-      <span class="tldr-label">TLDR</span>
-      <p class="tldr-text">A global bank had <span class="highlight">7+ disconnected tools</span>, no shared visibility, and teams unknowingly duplicating each other's work across four regions. No internal precedent existed. I led the research and design of a hub built entirely from scratch, and <span class="highlight">it shipped to 1,000+ users with measurable impact from day one.</span></p>
+      <div class="tldr-arc">
+        <div class="tldr-step"><div class="k">The problem</div><div class="v">Seven disconnected tools across four regions, no shared visibility. Teams duplicated work, missed deadlines.</div></div>
+        <div class="tldr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="tldr-step"><div class="k">What I did</div><div class="v">Led the research and designed the hub from scratch, running research and design in parallel on a live deadline.</div></div>
+        <div class="tldr-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+        <div class="tldr-step out"><div class="k">The outcome</div><div class="v">Shipped on time to <span class="hl">1,000+ analysts</span>, with faster turnaround, far less duplicated work, and full adoption.</div></div>
+      </div>
     </div>
 
     <!-- Challenge -->
@@ -886,34 +930,26 @@
       <div class="section-right">
         <h2 class="section-h reveal">A global bank. Dozens of tools. <span class="accent">No way to see the whole picture.</span></h2>
         <p class="body-text reveal d1">Global teams were paralyzed by disconnected tools, forcing employees to switch systems dozens of times a day. The task: consolidate critical workflows into a single workspace while maintaining compliance, scalability, and role-based personalization.</p>
-        <div class="card-list reveal d2">
-          <div class="card-item">
-            <div class="card-num">01</div>
-            <div class="card-content">
-              <h3>Tool fragmentation at scale</h3>
-              <p>Employees used <strong>7+ disconnected tools daily</strong>, switching context 40+ times per day with no single source of truth.</p>
-            </div>
+        <div class="cs-grid reveal d2">
+          <div class="cs-cell">
+            <div class="cs-num">01</div>
+            <h3>Tool fragmentation at scale</h3>
+            <p>Employees used <strong>7+ disconnected tools daily</strong>, switching context 40+ times per day with no single source of truth.</p>
           </div>
-          <div class="card-item">
-            <div class="card-num">02</div>
-            <div class="card-content">
-              <h3>No role-based prioritization</h3>
-              <p>Urgent tasks were buried alongside routine work. Managers had <strong>no visibility</strong> into blockers across their teams.</p>
-            </div>
+          <div class="cs-cell">
+            <div class="cs-num">02</div>
+            <h3>No role-based prioritization</h3>
+            <p>Urgent tasks were buried alongside routine work. Managers had <strong>no visibility</strong> into blockers across their teams.</p>
           </div>
-          <div class="card-item">
-            <div class="card-num">03</div>
-            <div class="card-content">
-              <h3>Duplicate work across regions</h3>
-              <p><strong>75% of teams</strong> reported unknowingly duplicating work. Missed dependencies caused deadline slips globally.</p>
-            </div>
+          <div class="cs-cell">
+            <div class="cs-num">03</div>
+            <h3>Duplicate work across regions</h3>
+            <p><strong>75% of teams</strong> reported unknowingly duplicating work. Missed dependencies caused deadline slips globally.</p>
           </div>
-          <div class="card-item">
-            <div class="card-num">04</div>
-            <div class="card-content">
-              <h3>Zero starting point</h3>
-              <p>No internal precedent. No existing tool to evolve. <strong>Designed entirely from scratch.</strong></p>
-            </div>
+          <div class="cs-cell">
+            <div class="cs-num">04</div>
+            <h3>Zero starting point</h3>
+            <p>No internal precedent. No existing tool to evolve. <strong>Designed entirely from scratch.</strong></p>
           </div>
         </div>
       </div>
@@ -992,11 +1028,11 @@
         </div>
 
         <div class="key-insight reveal d3">
-          <p><strong>Key insight:</strong> The friction wasn't tool overload, it was fragmented priorities. Without understanding the interdependencies between tools and roles, the hub risked becoming just another tool to manage, not a productivity multiplier.</p>
+          <p><strong>Key insight:</strong> The real problem wasn't too many tools. It was that none of them showed people what to do first. Combining them wouldn't help unless the hub made priorities obvious.</p>
         </div>
 
-        <div class="pull-quote reveal d3">
-          <p>I narrowed MVP scope to the highest-impact workflows, leaving low-impact integrations for a later release.</p>
+        <div class="key-insight reveal d3">
+          <p><strong>The trade-off:</strong> Rather than build everything at once, I shipped the workflows that mattered most first and saved the rest for later, trading completeness for a faster launch.</p>
         </div>
       </div>
     </section>
@@ -1068,7 +1104,7 @@
         </div>
 
         <div class="key-insight reveal d2">
-          <p><strong>Trade-off:</strong> Staged rollout by region to maximize adoption over speed. Longer timeline, but every team had the support they needed to transition effectively.</p>
+          <p><strong>The trade-off:</strong> I rolled the hub out one region at a time instead of all at once. It took longer, but every team got the support they needed to fully switch over.</p>
         </div>
 
         <p class="body-text reveal d2" style="margin-top:40px;">The Work Manager Hub is now a core tool used daily across global teams. It became the single source of truth, paving the way for AI-driven predictive tasking in future releases.</p>
