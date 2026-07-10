@@ -640,7 +640,7 @@
 
     /* Hero H1 — scale down so both impact lines read cleanly, not as a paragraph */
     /* Hero layout: reduce height so headline is above the fold */
-    .hero { min-height: auto; padding: 140px 80px 64px; justify-content: flex-start; }
+    .hero { min-height: auto; padding: clamp(96px, 18vw, 140px) clamp(24px, 6vw, 80px) 64px; justify-content: flex-start; }
     .hero-h1 { font-size: clamp(30px, 4.6vw, 62px); letter-spacing: -.03em; max-width: 1200px; margin-bottom: 20px; }
     .hero-deck { font-size: clamp(15px, 1.5vw, 19px); color: var(--muted); max-width: 860px; line-height: 1.55; margin-bottom: 48px; }
 
