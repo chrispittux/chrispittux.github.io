@@ -610,9 +610,17 @@
       .tldr { padding: 48px 24px; }
       .section-right { padding: 40px 24px; }
       .section-left { padding: 32px 24px 0; }
-      .hero-meta-row { grid-template-columns: repeat(2, 1fr); }
-      .hero-meta-item:first-child { border-radius: 10px 0 0 0; }
-      .hero-meta-item:last-child  { border-radius: 0 0 10px 0; }
+      /* mobile: primary meta becomes a stacked label/value list, no box */
+      .hero-meta-row { display: block; background: none; border: none; border-top: 1px solid rgba(255,255,255,.09); border-radius: 0; max-width: none; }
+      .hero-meta-item { background: none; backdrop-filter: none; -webkit-backdrop-filter: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.09); border-radius: 0 !important; }
+      .hero-meta-value { font-size: 15px; }
+      /* secondary tier: same stacked list, muted, bigger gap before it */
+      .hero-meta2 { margin-top: 0; gap: 0; }
+      .hero-meta2-row { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.09); }
+      .hero-meta2-row:first-child { margin-top: 14px; }
+      .hero-meta2-k { display: block; margin-bottom: 5px; min-width: 0; }
+      .hero-meta2-v { font-size: 14px; }
+      .hero-tools { margin-top: 6px; }
       .hero-img-wrap { padding: 0 24px; }
       .next-project { padding: 60px 24px; }
       footer { padding: 24px 24px calc(24px + env(safe-area-inset-bottom)); }
@@ -867,7 +875,7 @@
         </div>
       </div>
       <div class="hero-meta2 reveal d2">
-        <div class="hero-meta2-row"><span class="hero-meta2-k">Team</span><span class="hero-meta2-v">Full product team: Product Manager · 3 Designers/Researchers · Developers · QA · Business Analysts · SMEs</span></div>
+        <div class="hero-meta2-row"><span class="hero-meta2-k">Team</span><span class="hero-meta2-v">Full&nbsp;product&nbsp;team: Product&nbsp;Manager · 3&nbsp;Designers/Researchers · Developers · QA · Business&nbsp;Analysts · SMEs</span></div>
         <div class="hero-meta2-row"><span class="hero-meta2-k">Platform</span><span class="hero-meta2-v">Desktop &amp; tablet</span></div>
         <div class="hero-meta2-row"><span class="hero-meta2-k">Tools</span><span class="hero-tools"><span class="hero-tool">Figma</span><span class="hero-tool">Miro</span><span class="hero-tool">Fullstory</span><span class="hero-tool">Teams</span><span class="hero-tool">Excel</span></span></div>
       </div>
