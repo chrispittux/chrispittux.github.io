@@ -359,6 +359,16 @@
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,.08);
     }
+    .card-lock {
+      position: absolute; bottom: 12px; right: 12px; z-index: 2; pointer-events: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      color: var(--accent-2); letter-spacing: .04em; text-transform: uppercase;
+      background: rgba(10,14,26,.62); padding: 4px 9px; border-radius: 6px;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(111,190,252,.28);
+    }
+    .card-lock svg { width: 12px; height: 12px; }
 
     /* Soon card */
     .card-soon {
@@ -869,40 +879,8 @@
     .fcta-email.copied .ico-copy { display: none; }
     .fcta-email.copied .ico-check { display: inline-flex; }
     .sr-live { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-    /* ── Password gate modal ── */
-    .pw-modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
-    .pw-modal.open { opacity: 1; pointer-events: auto; }
-    .pw-modal, .pw-modal * { cursor: auto; }
-    .pw-modal .pw-input { cursor: text; }
-    .pw-modal button { cursor: pointer; }
-    body.pw-open #cur { display: none !important; }
-    .pw-backdrop { position: absolute; inset: 0; background: rgba(6,9,18,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .pw-panel { position: relative; width: 100%; max-width: 420px; background: #10162A; border: 1px solid var(--border-2); border-radius: 18px; padding: 32px 28px; box-shadow: 0 24px 64px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06); transform: translateY(10px) scale(.98); transition: transform .24s cubic-bezier(.16,1,.3,1); }
-    .pw-modal.open .pw-panel { transform: none; }
-    .pw-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: 8px; }
-    .pw-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
-    .pw-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 21px; font-weight: 700; color: var(--text); letter-spacing: -.02em; margin: 14px 0 8px; }
-    .pw-desc { font-size: 13px; line-height: 1.55; color: var(--muted); margin-bottom: 20px; }
-    .pw-form { display: flex; gap: 8px; }
-    .pw-input-wrap { position: relative; flex: 1; min-width: 0; }
-    .pw-input { width: 100%; background: rgba(255,255,255,.04); border: 1px solid var(--border-2); border-radius: 10px; padding: 12px 44px 12px 14px; color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; }
-    .pw-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: var(--muted); border-radius: 8px; transition: color .2s ease, background .2s ease; }
-    .pw-toggle:hover { color: var(--text); background: rgba(255,255,255,.06); }
-    .pw-toggle svg { width: 18px; height: 18px; }
-    .pw-toggle .icon-hide { display: none; }
-    .pw-toggle.on .icon-show { display: none; }
-    .pw-toggle.on .icon-hide { display: block; }
-    .pw-input::placeholder { color: #64748B; }
-    .pw-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
-    .pw-submit { flex-shrink: 0; background: var(--accent); color: #06121F; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; font-weight: 500; border-radius: 10px; padding: 0 18px; transition: transform .16s ease, filter .2s ease; }
-    .pw-submit:hover { filter: brightness(1.08); }
-    .pw-submit:active { transform: scale(.97); }
-    .pw-error { color: #F87171; font-size: 12.5px; margin-top: 12px; }
-    .pw-cancel { display: block; margin: 16px auto 0; color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; transition: color .2s ease; }
-    .pw-cancel:hover { color: var(--text); }
-    @media (prefers-reduced-motion: reduce) { .pw-modal, .pw-panel { transition: opacity .2s ease; } .pw-panel { transform: none; } }
   </style>
+  <link rel="stylesheet" href="gate.css" />
 </head>
 <body>
 
@@ -1010,6 +988,7 @@
           <div class="card-img">
             <img src="Fund Finance Images/Final Designs 1.png" alt="Fund Finance Ratings platform covenants view" loading="lazy">
             <span class="card-img-tag">Platform · Fintech</span>
+            <span class="card-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Password protected</span>
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -1019,7 +998,7 @@
             </div>
             <h2 class="card-title">Fund Finance Ratings</h2>
             <span class="card-badge">Credit Rating Agency</span>
-            <p class="card-desc">Designed a centralized enterprise platform that streamlines complex analyst workflows, replacing fragmented, spreadsheet-heavy processes with a more scalable experience.</p>
+            <p class="card-desc">Designed a centralized platform that replaces fragmented, spreadsheet-heavy analyst workflows with a scalable system.</p>
             <a href="fund-finance-ratings.html" class="card-link">
               View case study
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
@@ -1266,7 +1245,7 @@
       card.addEventListener('click', e => {
         if (e.target.closest('a')) return; // real link/anchor clicks behave normally
         var href = link.getAttribute('href');
-        if (href === 'work-manager-hub-broadsheet.html' || href === 'fund-finance-ratings.html') return; // protected: the password modal handles these
+        if (href === 'fund-finance-ratings.html') return; // protected: the password modal handles this
         window.location = href;
       });
     });
@@ -1335,78 +1314,6 @@
     })();
   </script>
 
-  <!-- Password gate for protected case studies -->
-  <div class="pw-modal" id="pwModal" role="dialog" aria-modal="true" aria-labelledby="pwTitle" aria-hidden="true">
-    <div class="pw-backdrop" data-pw-close></div>
-    <div class="pw-panel">
-      <span class="pw-eyebrow">Protected case study</span>
-      <h2 class="pw-title" id="pwTitle">Enter password to view</h2>
-      <p class="pw-desc">This case study covers client work under NDA. Enter the shared password to continue.</p>
-      <form class="pw-form" id="pwForm" autocomplete="off">
-        <div class="pw-input-wrap">
-          <input type="password" class="pw-input" id="pwInput" placeholder="Password" aria-label="Password" autocomplete="off" />
-          <button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password" aria-pressed="false">
-            <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
-            <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
-          </button>
-        </div>
-        <button type="submit" class="pw-submit">Unlock</button>
-      </form>
-      <p class="pw-error" id="pwError" hidden>Incorrect password. Try again.</p>
-      <button type="button" class="pw-cancel" data-pw-close>Cancel</button>
-    </div>
-  </div>
-  <script>
-    (function(){
-      /* ▼▼▼ CHANGE THIS to your shared password ▼▼▼ */
-      var PASSWORD = 'pitt0000';
-      /* ▲▲▲ CHANGE THIS to your shared password ▲▲▲ */
-      var UNLOCK_KEY = 'cs_unlocked';
-      var PROTECTED = ['work-manager-hub-broadsheet.html', 'fund-finance-ratings.html'];
-      var modal = document.getElementById('pwModal');
-      var form = document.getElementById('pwForm');
-      var input = document.getElementById('pwInput');
-      var error = document.getElementById('pwError');
-      var toggle = document.getElementById('pwToggle');
-      var pending = null;
-
-      function hidePassword(){ input.type = 'password'; if(toggle){ toggle.classList.remove('on'); toggle.setAttribute('aria-pressed', 'false'); toggle.setAttribute('aria-label', 'Show password'); } }
-      if(toggle){
-        toggle.addEventListener('click', function(){
-          var reveal = input.type === 'password';
-          input.type = reveal ? 'text' : 'password';
-          toggle.classList.toggle('on', reveal);
-          toggle.setAttribute('aria-pressed', String(reveal));
-          toggle.setAttribute('aria-label', reveal ? 'Hide password' : 'Show password');
-          input.focus();
-        });
-      }
-
-      function protectedHref(target){
-        var a = target.closest ? target.closest('a.card-link') : null;
-        if(!a){ var card = target.closest ? target.closest('.card') : null; a = card ? card.querySelector('a.card-link') : null; }
-        if(a && PROTECTED.indexOf(a.getAttribute('href')) > -1) return a.getAttribute('href');
-        return null;
-      }
-      function open(url){ pending = url; error.hidden = true; input.value = ''; hidePassword(); modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.classList.add('pw-open'); document.body.style.overflow = 'hidden'; setTimeout(function(){ input.focus(); }, 80); }
-      function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('pw-open'); document.body.style.overflow = ''; pending = null; }
-
-      document.addEventListener('click', function(e){
-        var href = protectedHref(e.target);
-        if(href){ e.preventDefault(); open(href); }
-      });
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        if(input.value === PASSWORD){
-          try { sessionStorage.setItem(UNLOCK_KEY, 'yes'); } catch(_){}
-          var url = pending; close(); window.location.href = url;
-        } else {
-          error.hidden = false; input.select();
-        }
-      });
-      modal.addEventListener('click', function(e){ if(e.target.hasAttribute('data-pw-close')) close(); });
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
-    })();
-  </script>
+  <script src="gate.js"></script>
 </body>
 </html>

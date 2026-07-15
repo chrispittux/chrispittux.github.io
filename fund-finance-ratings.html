@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <script>
     /* Password gate: if not unlocked via the modal on the landing page, bounce back there. */
-    (function(){ try { if (sessionStorage.getItem('cs_unlocked') !== 'yes') { window.location.replace('index.html'); } } catch(e){} })();
+    (function(){ try { if (sessionStorage.getItem('cs_unlocked') !== 'yes') { window.location.replace('index.html#gate=fund-finance'); } } catch(e){} })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Fund Finance Ratings — Chris Pitt UX Designer</title>

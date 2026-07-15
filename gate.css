@@ -1,0 +1,43 @@
+/* Shared password gate — modal styles.
+   Self-contained: colors are hard-coded (not page CSS vars) so the modal
+   looks identical on any page that includes this file. */
+.pw-modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.pw-modal.open { opacity: 1; pointer-events: auto; }
+.pw-modal, .pw-modal * { cursor: auto; }
+.pw-modal .pw-input { cursor: text; }
+.pw-modal a, .pw-modal button { cursor: pointer; }
+body.pw-open #cur { display: none !important; }
+.pw-backdrop { position: absolute; inset: 0; background: rgba(6,9,18,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.pw-panel { position: relative; width: 100%; max-width: 420px; background: #10162A; border: 1px solid rgba(99,130,200,.25); border-radius: 18px; padding: 32px 28px; box-shadow: 0 24px 64px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06); transform: translateY(10px) scale(.98); transition: transform .24s cubic-bezier(.16,1,.3,1); }
+.pw-modal.open .pw-panel { transform: none; }
+.pw-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #6FBEFC; display: inline-flex; align-items: center; gap: 8px; }
+.pw-eyebrow svg { width: 13px; height: 13px; }
+.pw-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 21px; font-weight: 700; color: #F0F2F8; letter-spacing: -.02em; margin: 14px 0 8px; }
+.pw-desc { font-size: 13px; line-height: 1.55; color: #9DAABF; margin-bottom: 20px; }
+.pw-form { display: flex; gap: 8px; }
+.pw-input-wrap { position: relative; flex: 1; min-width: 0; }
+.pw-input { width: 100%; background: rgba(255,255,255,.04); border: 1px solid rgba(99,130,200,.25); border-radius: 10px; padding: 12px 44px 12px 14px; color: #F0F2F8; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; }
+.pw-input::placeholder { color: #64748B; }
+.pw-input:focus { outline: none; border-color: #6FBEFC; box-shadow: 0 0 0 3px rgba(79,142,247,.12); }
+.pw-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #9DAABF; border: none; background: none; border-radius: 8px; transition: color .2s ease, background .2s ease; }
+.pw-toggle:hover { color: #F0F2F8; background: rgba(255,255,255,.06); }
+.pw-toggle svg { width: 18px; height: 18px; }
+.pw-toggle .icon-hide { display: none; }
+.pw-toggle.on .icon-show { display: none; }
+.pw-toggle.on .icon-hide { display: block; }
+.pw-submit { flex-shrink: 0; background: #6FBEFC; color: #06121F; font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; font-weight: 500; border: none; border-radius: 10px; padding: 0 18px; transition: transform .16s ease, filter .2s ease; }
+.pw-submit:hover { filter: brightness(1.08); }
+.pw-submit:active { transform: scale(.97); }
+.pw-error { color: #F87171; font-size: 12.5px; margin-top: 12px; }
+.pw-help { font-size: 12.5px; line-height: 1.5; color: #9DAABF; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(99,130,200,.15); text-align: left; }
+.pw-help-q { display: block; margin-bottom: 8px; }
+.pw-help-links { display: block; }
+.pw-help a { color: #6FBEFC; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.pw-help a:hover { border-bottom-color: #6FBEFC; }
+.pw-copy { font: inherit; color: #6FBEFC; background: none; border: none; padding: 0; cursor: pointer; border-bottom: 1px solid transparent; transition: color .2s ease, border-color .2s ease; }
+.pw-copy:hover { border-bottom-color: #6FBEFC; }
+.pw-copy.copied { color: #34D399; border-bottom-color: transparent; cursor: default; }
+.pw-help-sep { color: rgba(157,170,191,.45); margin: 0 8px; }
+.pw-cancel { display: block; width: fit-content; margin: 18px auto 0; padding: 2px 8px; color: #9DAABF; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; text-align: center; background: none; border: none; transition: color .2s ease; }
+.pw-cancel:hover { color: #F0F2F8; }
+@media (prefers-reduced-motion: reduce) { .pw-modal, .pw-panel { transition: opacity .2s ease; } .pw-panel { transform: none; } }
